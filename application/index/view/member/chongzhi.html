@@ -1,0 +1,30 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">余额充值</p>
+	<a href="{:url('Member/mingxi')}" class="shuom">账户明细</a>
+</header>
+<div id="main" class="person_mian">
+	<div class="user_info">
+		<form action="{:url('Member/chongzhilog')}" method="post">
+			<div class="tixan">
+				<div class="psd_li">
+			        <span>银行卡</span>
+			        <select name="bankid">
+			        	{volist name="ubanklist" id="vo"}
+			        	<option value="{$vo['bank_id']}">{$vo['bank_name']}（{$vo['bank_number']|substr=-4,4}）</option>
+			        	{/volist}
+			        </select>
+			    </div>	
+			    <div class="psd_li">
+			        <span>金额（￥）</span>
+			        <input type="text" name="total_fee" placeholder="请填写充值金额" value="">
+			    </div>
+			</div>
+			<input type="hidden" name="uid" value="{$info['id']}">
+			<input type="hidden" name="body" value="{$headdata['htitle']}">
+			<button class="submit">确定</button>
+		</form>
+	</div>		
+</div>
+{include file="pub/footer2" /}

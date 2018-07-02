@@ -1,0 +1,34 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main">
+	<div class="pro_top yz">
+		<dl class="active2">
+			<dt><span></span></dt>
+			<dd>实名验证</dd>
+		</dl>
+		<dl class="active2">
+			<dt><span></span></dt>
+			<dd>手机验证</dd>
+		</dl>
+		<dl class="active2">
+			<dt><span></span></dt>
+			<dd>预存押金</dd>
+		</dl>
+		<dl class="active2">
+			<dt><span></span></dt>
+			<dd>注册完成</dd>
+		</dl>
+	</div>
+	<div class="zc_succ">
+		<div class="zc_s_con">
+			<img src="/static/images/zc_03.png" alt=""/>
+			特派员注册成功！
+		</div>
+		<button class="redirect" redUrl="{:url('Member/login')}">确认</button>
+	</div>
+</div>
+{include file="pub/footer" /}

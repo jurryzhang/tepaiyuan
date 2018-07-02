@@ -1,0 +1,59 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+</header>
+<div id="main" class="person_mian">
+	<div class="account_details">
+	    <ul class="sel_type">
+	        <li class="current"><a>全部</a></li>
+	        <li class=""><a>充值</a></li>
+	        <li class=""><a>提现</a></li>
+	    </ul>
+	    <div class="type_box" style="display: block;">
+	    	{volist name="logdata" id="vo"}
+	        <div class="details_list">
+             	<div class="list1">
+             		<p>{$vo['body']}<span class="miaoshu">({$paylogstatus[$vo['type']][$vo['status']]})</span></p>
+             		<time>{$vo['add_time']|date='Y-m-d H:i:s',###}</time>
+             	</div>
+	            {$vo['total_fee']}
+	        </div>
+	        {/volist}
+	    </div>
+	
+	    <div class="type_box" style="display: none;">
+	        {volist name="chongzhilog" id="vo"}
+	        <div class="details_list">
+             	<div class="list1">
+             		<p>{$vo['body']}<span class="miaoshu">({$paylogstatus[$vo['type']][$vo['status']]})</span></p>
+             		<time>{$vo['add_time']|date='Y-m-d H:i:s',###}</time>
+             	</div>
+	            {$vo['total_fee']}
+	        </div>
+	        {/volist}
+	    </div>
+	
+	    <div class="type_box" style="display: none;">
+	        {volist name="tixianlog" id="vo"}
+	        <div class="details_list">
+             	<div class="list1">
+             		<p>{$vo['body']}<span class="miaoshu">({$paylogstatus[$vo['type']][$vo['status']]})</span></p>
+             		<time>{$vo['add_time']|date='Y-m-d H:i:s',###}</time>
+             	</div>
+	            {$vo['total_fee']}
+	        </div>
+	        {/volist}
+	    </div>
+	</div>		
+</div>
+{include file="pub/footer2" /}
+<script type="text/javascript">
+    jQuery(function($){
+        $('.account_details ul li').click(function(){
+            var index = $('.account_details ul li').index(this);
+            $(this).addClass('current').siblings('li').removeClass('current');
+            $('.account_details .type_box:eq('+index+')').show().siblings('.type_box').hide();
+        })
+    })
+</script>

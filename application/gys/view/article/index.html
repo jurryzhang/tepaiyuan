@@ -1,0 +1,12 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-jiantou" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$hdata['htitle']}</p>
+</header>
+<div id="main" class="person_mian">
+	<div class="user_info">
+		<h1 class="about_tit">{$article_info['title']}</h1>
+		{$article_info['content']}
+	</div>		
+</div>
+{include file="pub/footer2" /}

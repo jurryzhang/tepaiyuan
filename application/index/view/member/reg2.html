@@ -1,0 +1,52 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main">
+	<div class="pro_top yz">
+		<dl>
+			<dt><span style="background: #259b24;"></span></dt>
+			<dd>实名验证</dd>
+		</dl>
+		<dl>
+			<dt><span style="background: #259b24;"></span></dt>
+			<dd>手机验证</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>预存押金</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>注册完成</dd>
+		</dl>
+	</div>
+	<div class="yj">
+		<form action="{:url('Member/reg_yajin')}" method="post">
+			<div class="yj_top">
+				<span>押金（可退）</span>
+				<b>￥{$yajin}</b>
+				<input type="hidden" name="uid" value="{$uid}">
+				<input type="hidden" name="amount" value="{$yajin}">
+				<input type="hidden" name="type" value="1">
+				<input type="hidden" name="returnUrl" value="{$returnUrl}">
+				<input type="hidden" name="body" value="{$paybody}">
+				<div class="clear"></div>
+			</div>
+			<div class="yj_mid">
+				<span><img src="/static/images/wei_03.png" alt=""/>微信支付</span>
+				<input type="radio" name="trade_type"  value="weixin"  />
+				<div class="clear"></div>
+			</div>
+			<div class="yj_btm">
+				<p>押金可从原路退换</p>
+				<p>预存押金每日利息为***%</p>
+			</div>
+			<button class="chongzhi001">去充值</button>
+		</form>
+	</div>
+	
+</div>
+{include file="pub/footer2" /}

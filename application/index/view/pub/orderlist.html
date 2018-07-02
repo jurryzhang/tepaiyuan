@@ -1,0 +1,35 @@
+{volist name="list" id="vo" empty="$empty"}
+<div class="order">
+	<p class="order1"><i class="icon iconfont icon-juli2"></i><span>{$vo['juli']}km</span>
+			{$vo['address']}							
+	</p>
+	<div class="o_left">
+		<p>收货时间：
+			<span>
+				{if condition="$vo['songda_time']==0"}
+				尽快送达
+				{else /}
+				{$vo['songda_time']}（预计）
+				{/if}
+			</span>
+		</p>
+		<p>重量：<span>{$vo['weight']}KG</span>&nbsp;&nbsp;&nbsp;运费：<span style="color: red;">{$vo['yunfei']}</span>元</p>
+		<b>易碎、易压</b>	
+		<div class="clear"></div>
+	</div>
+	<div class="o_right">
+		{switch name="vo.qd_status"}
+		    {case value="0"}
+			<a href="javascripr:;" class="qiangdanzhong" oid="{$vo['id']}">立即<br/>抢单</a>
+		    {/case}
+		    {case value="1"}
+			<a href="javascripr:;" class="qiangdanwancheng">抢单<br/>成功</a>
+		    {/case}
+		    {case value="2"}
+			<a href="javascripr:;" class="yibeiqiang">抢单<br/>失败</a>
+		    {/case}
+		{/switch}
+	</div>
+	<div class="clear"></div>
+</div>	
+{/volist}	

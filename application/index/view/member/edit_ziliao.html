@@ -1,0 +1,56 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main" class="person_mian">
+	<div class="user_info">
+		<form id="formdata" action="{:url('Member/edit_ziliao')}" method="post" enctype="multipart/form-data" >
+			<ul>
+				<li>
+					<label style="line-height: 0.52rem;">头像</label>
+					<div class="tx_box">
+						<img class="uploadimg_show" src="{$info['uimg']}" />
+						<input class="imgupload" type="file" accept="image/*" lookid="{$info['id']}" shujubiao="freight" ziduan="uimg" saveurl="{:url('Interfun/imgupload')}" />
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>真实姓名</label>
+					<input type="text" onclick="msgTishi('真实姓名不能重新编辑');" style="color: #ccc;" readonly="readonly" value="{$info['name']}" />
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>性别</label>
+					<div class="xb">
+						<span>女</span>
+						<input type="radio" name="sex" value="1" {eq name="$info['sex']" value="1"}checked=""{/eq} />
+						<span>男</span>
+						<input type="radio" name="sex" value="0" {eq name="$info['sex']" value="0"}checked=""{/eq} />
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>手机号</label>
+					<input type="text" onclick="msgTishi('手机号不能重新编辑');" style="color: #ccc;" readonly="readonly" value="{$info['telphone']}" />
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>座机号</label>
+					<input type="text" name="landline" value="{$info['landline']}" />
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>邮箱</label>
+					<input type="text" name="email" value="{$info.email}" />
+					<div class="clear"></div>
+				</li>
+			</ul>
+			<input type="hidden" name="id" value="{$info['id']}">
+			<button class="submit">确定</button>
+		</form>
+	</div>		
+</div>
+{include file="pub/footer" /}
+

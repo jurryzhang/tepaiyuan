@@ -1,0 +1,57 @@
+{include file='pub/header' /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main" class="person_mian">
+	<div class="person_top">
+		<div class="per_t_l">
+			<img class="uimg" src="{$info['uimg']}">
+		</div>
+		<div class="per_t_m">
+			<p>{$info['name']}</p>
+			<p style="display:none;">{$info['telphone']}</p>
+			<p><span>
+			{eq name="jiedanStatue" value="0"}暂停接单{else/}开始接单{/eq}</span></p>
+		</div>
+		<div class="per_t_r">
+			<a href="{:url('Member/edit_ziliao')}"><img src="/static/images/pen_03.png" alt=""/></a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="person_mid">
+		<h3>我的钱包</h3>
+		<p>我的押金：￥{$info['yajin']}
+			<a href="{:url('Member/tyj')}" title="">退押金</a>
+		</p>
+		<p class="per_last_p1">
+	  		<a href="{:url('Member/list_yhk')}" title="">银行卡：（<span>{$bankcount}</span>张） <b>></b></a> 
+	  	</p>
+		<p>我的余额：<span>￥{$info['amount']}</span><a href="{:url('Member/tixian')}" title="">提现</a>
+		<!-- <br/><a href="{:url('Member/chongzhi')}" title="" style="margin-bottom: 0.08rem;">充值</a> -->
+		</p>
+		<p class="per_last_p1">
+			<a href="{:url('Member/mingxi')}" title="">查看明细<b>></b></a>
+		</p>
+	</div>
+	<div class="person_mid person_btm">
+		<h3>使用帮助</h3>
+		<p class="per_last_p1">
+			<a href="{:url('Member/resetpwd')}" title="修改密码">修改密码<b>></b></a>
+		</p>
+		<p class="per_last_p1">
+			<a href="" title="客服中心">客服中心<img src="/static/images/contact_11.png" alt=""/></a>
+		</p>
+		<p class="per_last_p1">
+			<a href="{:url('Article/index')}" title="常见问题">常见问题<b>></b></a>
+		</p>
+		<p class="per_last_p1">
+			<a href="{:url('Article/datalist')}" title="关于我们">关于我们<b>></b></a>
+		</p>
+	</div>	
+	<div class="userOut">
+		<a href="{:url('Member/signout')}" title="退出">退出</a>
+	</div>
+</div>
+{include file="pub/footer" /}

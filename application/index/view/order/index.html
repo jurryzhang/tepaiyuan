@@ -1,0 +1,195 @@
+{include file='pub/header' /}
+	<header id="header">
+		<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+		<p class="title">{$headdata['htitle']}</p>
+		<i class="icon iconfont icon-gengduo"></i>
+	</header>
+	
+	<div id="main">
+		<div class="prosingle_top">
+			<a href="{:url('Order/index')}"><span {eq name="ym_type" value="all"}class="sel_sp"{/eq} >全部订单</span></a>
+			<a href="{:url('Order/index',['type'=>'no'])}"><span {eq name="ym_type" value="no"}class="sel_sp"{/eq} >未完成订单</span></a>
+			<a href="{:url('Order/index',['type'=>'yes'])}"><span {eq name="ym_type" value="yes"}class="sel_sp"{/eq} >已完成订单</span></a>
+		</div>
+		<div class="maincontent">	
+			{volist name="orderlist" id="vo" empty="$empty"}
+			<div class="order_list prosingle_main" >
+				<div class="order" style="border: 0;">
+					<p class="order1"><i class="icon iconfont icon-juli2"></i><span>{$vo['juli']}km</span>
+							{$vo['address']}							
+					</p>
+					<div class="o_left">
+						<p>订单编号：
+						<span> 
+						{$vo['ordermarket_no']}
+						</span>
+						<p>送达时间：
+						<span> 
+						{if condition="$vo['songda_time']==0"}
+						尽快送达
+						{else /}
+						{$vo['songda_time']}（预计）
+						{/if}
+						</span>
+						</p>
+						<p>重量：<span>{$vo['weight']}KG</span>&nbsp;&nbsp;&nbsp;运费：<span style="color: red;">{$vo['yunfei']}</span>元</p>
+						<b>易碎、易压</b>	
+						<div class="clear"></div>
+					</div>
+					{eq name="vo.status" value="5"}
+						<div class="o_right_yiwanc">已完成</div>
+					{else/}
+						<div class="o_right">
+							<a href="{:url('Order/details',['id'=>$vo['id']])}" class="qiangdanzhong ddxq">订单详情</a>
+						</div>
+					{/eq}
+					<div class="clear"></div>
+				</div>
+				
+
+				{neq name="vo.status" value="5"}
+				<ul class="spinfo" style="border: 0;">
+					{volist name="vo.goodslist" id="v"}
+					<li>
+						<div class="spleft">
+							<div class="sppic"><img src="{$v['img']}"></div>
+							<div class='spxq'>
+								<p>{$v['name']}</p>
+								<p>{$v['content']}</p>
+								<p>{$v['goods_weight']}KG/{$v['unit']}</p>
+							</div>
+						</div>
+						<div class="spright">
+							<p>X{$v['goods_nums']}</p>
+							<p style="color: #ffd419;">￥{$v['real_price']}</p>
+						</div>
+					</li>
+					{/volist}
+				</ul>
+				<div class="pro_top yz01">
+					{switch name="vo['freight_status']"}
+					    {case value="1"}
+						<dl class="active1">
+							<dt><span ></span></dt>
+							<dd>已接单</dd>
+						</dl>
+						<dl class="hui">
+							<dt><span></span></dt>
+							<dd>已取货</dd>
+						</dl>
+						<dl class="hui">
+							<dt><span></span></dt>
+							<dd>已送达</dd>
+						</dl>
+						<dl class="hui">
+							<dt><span></span></dt>
+							<dd>已完成</dd>
+						</dl>
+					    {/case}
+					    {case value="2"}
+						<dl>
+							<dt><span ></span></dt>
+							<dd>已接单</dd>
+						</dl>
+						<dl class="active1">
+							<dt><span></span></dt>
+							<dd>已取货</dd>
+						</dl>
+						<dl class="hui">
+							<dt><span></span></dt>
+							<dd>已送达</dd>
+						</dl>
+						<dl class="hui">
+							<dt><span></span></dt>
+							<dd>已完成</dd>
+						</dl>
+					    {/case}
+					    {case value="3"}
+						    {switch name="vo['status']"}
+						    	{case value="5"}
+						    	<dl>
+									<dt><span ></span></dt>
+									<dd>已接单</dd>
+								</dl>
+								<dl>
+									<dt><span></span></dt>
+									<dd>已取货</dd>
+								</dl>
+								<dl class="active1">
+									<dt><span></span></dt>
+									<dd>已送达</dd>
+								</dl>
+								<dl class="active1">
+									<dt><span></span></dt>
+									<dd>已完成</dd>
+								</dl>
+						    	{/case}
+						    	{case value="11"}
+						    	<dl>
+									<dt><span ></span></dt>
+									<dd>已接单</dd>
+								</dl>
+								<dl>
+									<dt><span></span></dt>
+									<dd>已取货</dd>
+								</dl>
+								<dl class="active1">
+									<dt><span></span></dt>
+									<dd>已送达</dd>
+								</dl>
+								<dl class="active1">
+									<dt><span></span></dt>
+									<dd>已完成</dd>
+								</dl>
+						    	{/case}
+						    	{case value="10"}
+						    	<dl>
+									<dt><span ></span></dt>
+									<dd>已接单</dd>
+								</dl>
+								<dl>
+									<dt><span></span></dt>
+									<dd>已取货</dd>
+								</dl>
+								<dl class="active1">
+									<dt><span></span></dt>
+									<dd>已送达</dd>
+								</dl>
+								<dl class="active1">
+									<dt><span></span></dt>
+									<dd>已完成</dd>
+								</dl>
+						    	{/case}
+						    	{default /}
+						    		<dl>
+										<dt><span ></span></dt>
+										<dd>已接单</dd>
+									</dl>
+									<dl>
+										<dt><span></span></dt>
+										<dd>已取货</dd>
+									</dl>
+									<dl class="active1">
+										<dt><span></span></dt>
+										<dd>已送达</dd>
+									</dl>
+									<dl as1="{$vo['freight_status']}" as2="{$vo['status']}" class="hui">
+										<dt><span></span></dt>
+										<dd>已完成</dd>
+									</dl>
+						    {/switch}
+						
+					    {/case}
+					    {default /}
+					{/switch}
+				</div>
+				{/neq}
+
+
+			</div>
+			{/volist}
+
+		</div>
+		
+	</div>
+{include file="pub/footer" /}

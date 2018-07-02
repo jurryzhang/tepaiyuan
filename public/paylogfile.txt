@@ -1,0 +1,214 @@
+-----------WXH5:2017-12-12 14:46:08-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'sae8Zo1SSHoPs9ma',
+  'sign' => 'AEDFEF379534BC9B8B3F4C02D77BF4E5',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx20171212144604621210b8f30374188002',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20171212144604621210b8f30374188002&package=3542745857',
+)
+
+
+-----------WXH5:2017-12-12 14:51:52-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'naEljD8ejlo05sQs',
+  'sign' => '4B9EB5AE2535021ACCEF22BC16713ED4',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx201712121451481eb2c168280468618497',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx201712121451481eb2c168280468618497&package=584376235',
+)
+
+
+-----------WXH5:2017-12-12 14:55:37-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => '9lzmU657GDcxKgj0',
+  'sign' => '514EBFE5BE013A70F80B04534B0DEBBB',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx20171212145532af7a13f44f0325236959',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20171212145532af7a13f44f0325236959&package=1493662910',
+)
+
+
+-----------WXH5:2017-12-12 14:55:37-----------------http://pay.yuyoupay.com/index/pay/gotr
+
+
+-----------WXH5-2:2017-12-12 14:55:37-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => '9lzmU657GDcxKgj0',
+  'sign' => '514EBFE5BE013A70F80B04534B0DEBBB',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx20171212145532af7a13f44f0325236959',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20171212145532af7a13f44f0325236959&package=1493662910&redirect_url=http%3A%2F%2Fpay.yuyoupay.com%2Findex%2Fpay%2Fgotr',
+)
+
+
+-----------WXH5:2017-12-12 14:56:24-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'ccHdo9na1QFwMcmy',
+  'sign' => 'D1E3BFB7975F9F9A71319DCFCB3D4E1E',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx2017121214561925ca7c8fe60500861196',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx2017121214561925ca7c8fe60500861196&package=2992097161',
+)
+
+
+-----------WXH5:2017-12-12 14:56:24-----------------http://pay.yuyoupay.com/index/pay/gotr
+
+
+-----------WXH5-2:2017-12-12 14:56:24-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'ccHdo9na1QFwMcmy',
+  'sign' => 'D1E3BFB7975F9F9A71319DCFCB3D4E1E',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx2017121214561925ca7c8fe60500861196',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx2017121214561925ca7c8fe60500861196&package=2992097161&redirect_url=http%3A%2F%2Fpay.yuyoupay.com%2Findex%2Fpay%2Fgotr',
+)
+
+
+-----------WXH5:2017-12-12 14:57:01-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'e5nmvlkjXxzNlHLz',
+  'sign' => '8DC1D17D002AF44B8248C53261832B9C',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx20171212145657238eb6f5330358463146',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20171212145657238eb6f5330358463146&package=3071665359',
+)
+
+
+-----------WXH5:2017-12-12 14:57:01-----------------http://pay.yuyoupay.com/index/pay/gotr
+
+
+-----------WXH5-2:2017-12-12 14:57:01-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'e5nmvlkjXxzNlHLz',
+  'sign' => '8DC1D17D002AF44B8248C53261832B9C',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx20171212145657238eb6f5330358463146',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20171212145657238eb6f5330358463146&package=3071665359&redirect_url=http%3A%2F%2Fpay.yuyoupay.com%2Findex%2Fpay%2Fgotr',
+)
+
+
+-----------WXH5:2017-12-12 14:59:25-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'vbyw8cTEsVsDBr80',
+  'sign' => '961247FAFDDDD9C0BB27C7DDE169D3D8',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx20171212145920385ba7089a0311220326',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20171212145920385ba7089a0311220326&package=1588877647',
+)
+
+
+-----------WXH5:2017-12-12 14:59:25-----------------http://pay.yuyoupay.com/index/pay/gotr
+
+
+-----------WXH5-2:2017-12-12 14:59:25-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'vbyw8cTEsVsDBr80',
+  'sign' => '961247FAFDDDD9C0BB27C7DDE169D3D8',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx20171212145920385ba7089a0311220326',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20171212145920385ba7089a0311220326&package=1588877647&redirect_url=http%3A%2F%2Fpay.yuyoupay.com%2Findex%2Fpay%2Fgotr',
+)
+
+
+-----------WXH5:2017-12-12 14:59:27-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'RgkscAjDOEIZR7Ve',
+  'sign' => '8675D01CB17AC9FC5B49DC7A9410444C',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx201712121459233bc13b7a150751805704',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx201712121459233bc13b7a150751805704&package=3887240086',
+)
+
+
+-----------WXH5:2017-12-12 14:59:27-----------------http://pay.yuyoupay.com/index/pay/gotr
+
+
+-----------WXH5-2:2017-12-12 14:59:27-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => 'RgkscAjDOEIZR7Ve',
+  'sign' => '8675D01CB17AC9FC5B49DC7A9410444C',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx201712121459233bc13b7a150751805704',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx201712121459233bc13b7a150751805704&package=3887240086&redirect_url=http%3A%2F%2Fpay.yuyoupay.com%2Findex%2Fpay%2Fgotr',
+)
+
+
+-----------WXH5:2018-03-13 15:36:31-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => '8y8hujUL5GRwV61f',
+  'sign' => 'DC556BD5470BA677437741AA0AB01BB1',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx201803131536293255e737ee0519878933',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx201803131536293255e737ee0519878933&package=1654434235',
+)
+
+
+-----------WXH5:2018-03-13 15:36:31-----------------http://pay.yuyoupay.com/index/pay/gotr
+
+
+-----------WXH5-2:2018-03-13 15:36:31-----------------array (
+  'return_code' => 'SUCCESS',
+  'return_msg' => 'OK',
+  'appid' => 'wx229cd21c928ffa66',
+  'mch_id' => '1484355072',
+  'nonce_str' => '8y8hujUL5GRwV61f',
+  'sign' => 'DC556BD5470BA677437741AA0AB01BB1',
+  'result_code' => 'SUCCESS',
+  'prepay_id' => 'wx201803131536293255e737ee0519878933',
+  'trade_type' => 'MWEB',
+  'mweb_url' => 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx201803131536293255e737ee0519878933&package=1654434235&redirect_url=http%3A%2F%2Fpay.yuyoupay.com%2Findex%2Fpay%2Fgotr',
+)
+
+

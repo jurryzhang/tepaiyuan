@@ -1,0 +1,79 @@
+{include file="pub/header"}
+<header id="header">
+	<p class="title">{$hdata['htitle']}</p>
+</header>
+<div id="main">
+	<div class="jrddBox">
+		<div class="jrddTitle">
+			<i class="icon iconfont icon-jinridingdan"></i>
+			<span>今日订单</span>
+		</div>
+		<ul class="ddfl clearfix">
+			<li>
+				<a href="{:url('order/index',['status'=>'5,10'])}">
+					<h1>已完成订单</h1>
+					<span id="overed">{$overed}</span>
+				</a>
+			</li>
+			<li>
+				<a href="{:url('order/index',['status'=>'2'])}">
+					<h1>新接订单</h1>
+					<span id="new" >{$new}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="search">
+		<form action="" method="get">
+			<i class="icon iconfont icon-search"></i>
+			<input name="key" type="text" value="{$key}" placeholder="搜索内容"/>
+			<button type="submit">搜索</button>
+		</form>
+	</div>
+	<div class="banBox">
+		<div class="ban">
+			<img src="/gys/images/gys_ban.jpg">
+		</div>
+		<div class="proTit">
+			<span class="dot"></span>
+			<span class="line"></span>
+			<h1>我的商品</h1>
+			<span class="line"></span>
+			<span class="dot"></span>
+		</div>
+	</div>
+	<div class="proList">
+		<ul>
+			{volist name='list' id='vo'}
+			<li>
+				<div class="proTp fl">
+					<img src="{$vo.img}">
+				</div>
+				<div class="proJs fr">
+					<h1>{$vo.name}</h1>
+					<b>库存：{$vo.store_nums}</b>
+					<p>现价：<span>￥{$vo.sell_price}</span> /
+						<del>原价：￥{$vo.market_price}</del>
+					</p>
+					<a href="pro_detail">{$vo.content}</a>
+				</div>
+			</li>
+			{/volist}
+		</ul>
+	</div>
+</div>{include file="pub/footer"}
+<script>
+$(function () {
+  time_marketOrder();
+});
+  //市场订单实时请求
+  function time_marketOrder() {
+    var url = "{:url('get_order_count')}";
+    $.post(url, {serv_time:'ttt'}, function (result) {
+      $('#overed').text(result.overed);
+      $('#new').text(result.new);
+        window.setTimeout("time_marketOrder()", 3 * 1000);
+
+    }, "json");
+  }
+</script>

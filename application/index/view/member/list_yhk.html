@@ -1,0 +1,30 @@
+{include file="pub/header"}
+<style>
+.fr{float: right;}
+</style>
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick='window.location.href="{:url('index')}";'></i>
+	<p class="title">{$headdata['htitle']}</p>
+</header>
+<div id="main" style="padding-top: 0.52rem;background: #f6f6f6;">
+	<div class="proList proList1 yhklist">
+		<ul>
+			{volist name="list" id="vo"}
+			<li>
+				<div class="proJs fr">
+					<h1>{$vo.bank_name}</h1>
+					<p>持卡人：{$vo.bank_main}</p>
+					<p>手机号：{$vo.bank_mobile}</p>
+					<p>卡号：{$vo.bank_number}</p>
+				</div>
+			</li>
+			{/volist}
+		</ul>
+	</div>
+	<div class="proZeng">
+		<a href="{:url('add_yhk')}">
+			<i class="icon iconfont icon-iconjia"></i>
+			<p>添加新卡</p>
+		</a>
+	</div>
+</div>{include file="pub/footer"}

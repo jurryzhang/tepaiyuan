@@ -1,0 +1,39 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-jiantou" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$hdata['htitle']}</p>
+</header>
+<div id="main" class="person_mian">
+	<div class="user_info">
+		<form id="formdata" action="{:url('User/edit')}" method="post" enctype="multipart/form-data">
+			<ul>
+				<li>
+					<label style="line-height: 0.52rem;">头像</label>
+					<div class="tx_box">
+						<img class="uploadimg_show" src="{$info['certif_img']}" />
+						<input class="imgupload" type="file" accept="image/*" lookid="{$info['id']}" shujubiao="seller" ziduan="certif_img" saveurl="{:url('Interfun/imgupload')}" />
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>真实姓名</label>
+					<input type="text" name="true_name" value="{$info['true_name']}"/>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>手机号</label>
+					<input type="text" name="mobile" value="{$info['mobile']}"/>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<label>邮箱</label>
+					<input type="text" name="email" value="{$info.email}"/>
+					<div class="clear"></div>
+				</li>
+			</ul>
+			<input type="hidden" name="id" value="{$info['id']}">
+			<button class="submit">确定</button>
+		</form>
+	</div>
+</div>{include file="pub/footer" /}
+

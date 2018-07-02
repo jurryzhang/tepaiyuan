@@ -1,0 +1,236 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-jiantou" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$hdata['htitle']}</p>
+</header>
+<div id="main" class="zhucemain" >
+	<form action="{:url('User/reg1')}" method="post" enctype="multipart/form-data" onsubmit="return regCheckgys();">
+		<ul class="cheinfo">
+			<li>
+				<label>真实姓名</label>
+				<input type="text" id="true_name" name="true_name">
+			</li>
+			<li>
+				<label>负责人</label>
+				<input type="text" id="person_charge" name="person_charge">
+			</li>
+			<li>
+				<label>手机号码</label>
+				<input type="text" id="mobile" name="mobile">
+			</li>
+			<li>
+				<label>座机号码</label>
+				<input type="text" id="phone" name="phone">
+			</li>				
+		</ul>
+		<ul class="zhenginfo">
+			<li>
+				<label>注册名称</label>
+				<input type="text" id="xsznum" name="xsznum">
+			</li>
+			<li>
+				<label>税号</label>
+				<input type="text" id="tax_number" name="tax_number">
+			</li>
+			<li>
+				<label>营业证照</label>
+				<ul class="pic">
+					<span><input type="file" class="pic1 imgup_show" name="paper_img"></span>
+					<span><input type="file" class="pic1 imgup_show" name="certif_img"></span>
+					<span><input type="file" class="pic1 imgup_show" name="carinfo_img"></span>
+				</ul>
+				<p>(营业执照、卫生许可证、营业场所外部照片等)</p>
+			</li>
+		</ul>
+		<ul class="chexinxi">
+			<li>
+				<label>所在市场</label>
+				<select name="market_id">
+					{foreach $mlist as $v}
+					<option value="{$v['id']}">{$v['name']}</option>
+					{/foreach}
+				</select>
+			</li>
+			<li>
+				<label>摊位号</label>
+				<input type="text" placeholder="摊位号" id="stall_number" name="stall_number">
+			</li>
+			<li>
+				<label>经营范围</label>
+				<input type="text" placeholder="经营范围" id="scope_business" name="scope_business">
+			</li>
+		</ul>
+		<p class="xieyi">
+			<input type="checkbox" id="status" name="status" checked="">我同意接受<a href="javascript:;">《供应商服务协议》</a>
+		</p>
+		<input class="sub" type="submit" value="提交">
+	</form>
+</div>
+{include file="pub/footer2" /}
+<script>
+
+  /**
+   * js验证函数
+   */
+//供应商注册验证
+  function regCheckgys() {
+    var true_name = $('#true_name').val();
+    var person_charge = $('#person_charge').val();
+    var mobile = $('#mobile').val();
+    var phone = $('#phone').val();
+    var xsznum = $('#xsznum').val();
+    var tax_number = $('#tax_number').val();
+    var stall_number = $('#stall_number').val();
+    var scope_business = $('#scope_business').val();
+
+    if (checkFun(true_name, '真实姓名不能为空')) {
+      return false;
+    }
+    if (checkFun(person_charge, '负责人不能为空')) {
+      return false;
+    }
+    if (checkFun(mobile, '手机号不能为空')) {
+      return false;
+    }
+    if (checkFun(mobile, '请填写有效的手机号', 4)) {
+      return false;
+    }
+    if (checkFun(phone, '座机号不能为空')) {
+      return false;
+    }
+    if (checkFun(xsznum, '不能为空')) {
+      return false;
+    }
+    if (checkFun(tax_number, '税号不能为空')) {
+      return false;
+    }
+    if (checkFun(tax_number, '税号格式有误', 5)) {
+      return false;
+    }
+    if (checkFun(stall_number, '摊位号不能为空')) {
+      return false;
+    }
+    if (checkFun(scope_business, '经营范围不能为空')) {
+      return false;
+    }
+    if (checkFun(status, '请接受协议', 6)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  // 修改密码验证
+  function restpwdCheck() {
+    var oldpwd = $('#oldpwd').val();
+    var newpwd = $('#newpwd').val();
+    var renewpwd = $('#renewpwd').val();
+    if (checkFun(oldpwd, '请输入旧密码')) {
+      return false;
+    }
+    if (checkFun(newpwd, '请输入新密码')) {
+      return false;
+    }
+    if (checkFun(newpwd, '密码长度为6位字符', 2)) {
+      return false;
+    }
+    if (checkFun(renewpwd, '请输入确认密码', 2)) {
+      return false;
+    }
+    if (checkFun(newpwd, '新密码与确认密码有误', 3, renewpwd)) {
+      return false;
+    }
+    return true;
+  }
+
+  // 忘记密码检测1
+  function forgetpwdCheck() {
+    var telphone = $('#telphone').val();
+    var telcode = $('#telcode').val();
+    if (checkFun(telphone, '请输入手机号')) {
+      return false;
+    }
+    if (checkFun(telcode, '请输入核验码')) {
+      return false;
+    }
+    return true;
+  }
+
+  // 忘记密码检测2
+  function forgetpwdCheck2() {
+    var newpwd = $('#newpwd').val();
+    var renewpwd = $('#renewpwd').val();
+    if (checkFun(newpwd, '请输入新密码')) {
+      return false;
+    }
+    if (checkFun(newpwd, '密码长度为6位字符', 2)) {
+      return false;
+    }
+    if (checkFun(renewpwd, '请输入确认密码')) {
+      return false;
+    }
+    if (checkFun(newpwd, '新密码与确认密码有误', 3, renewpwd)) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * [checkFun 验证方法]
+   * @param  {[type]} val  [需要验证的值]
+   * @param  {[type]} msg  [提示]
+   * @param  {String} type [类型 1空验证 2长度验证 3是否相等 4手机号验证 5税号验证 6checked验证]
+   * @return {[type]}      [description]
+   */
+  function checkFun(val, msg, type=1, other=6) {
+    if (type == 1) {
+      if (!val || val == '') {
+        alert(msg);
+        return true;
+      }
+    }
+    if (type == 2) {
+      if (val.length < other) {
+        alert(msg);
+        return true;
+      }
+    }
+    if (type == 3) {
+      if (val != other) {
+        alert(msg);
+        return true;
+      }
+    }
+    if (type == 4) {
+      //手机号验证
+      var regularC = /^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/;
+      if (!regularC.test(val)) {
+        alert(msg);
+        return true;
+      }
+    }
+    if (type == 5) {
+      //税号验证
+      var regularC = /^[A-Z0-9]{15}$|^[A-Z0-9]{18}$/;
+      if (!regularC.test(val)) {
+        alert(msg);
+        return true;
+      }
+    }
+    if (type == 6) {
+      //checked验证
+      if (!val.is(':checked')) {
+        alert(msg);
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  //邮箱验证
+  function checkEmail(email) {
+    email = email || '';
+    return (email.length > 3 && email.indexOf('@') > -1);
+  }
+</script>

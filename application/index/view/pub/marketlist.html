@@ -1,0 +1,8 @@
+{volist name="list" id="vo" empty="$empty"}
+<li>
+	<a href="{:url('Index/shichanglist',['id'=>$vo['id'],'type'=>$parameter])}">
+		<p>{$vo['name']}</p>
+		<p><strong id="{$parameter}market_{$vo['id']}">{$vo['num']} </strong>个订单</p>
+	</a>
+</li>
+{/volist}

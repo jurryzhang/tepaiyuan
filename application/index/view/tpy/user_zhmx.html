@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, user-scalable=0, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<title>特派员</title>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/index.css" type="text/css">
+		
+	</head>
+
+	<body>
+		<header id="header">
+			<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+			<p class="title">账户明细</p>
+		</header>
+		<div id="main" class="person_mian">
+			<div class="account_details">
+			    <ul class="sel_type">
+			        <li class="current"><a>全部</a></li>
+			        <li class=""><a>充值</a></li>
+			        <li class=""><a>提现</a></li>
+			    </ul>
+			    <div class="type_box" style="display: block;">
+			        <div class="details_list">
+			             <div class="list1">
+			             	<p>在线支付</p>
+			             	<time>2017-12-01 09:39:51</time>
+			             </div>
+			             <span>-154.60</span>
+			        </div>
+			        <div class="details_list">
+			            <div class="list1">
+			            	<p>充值</p>
+			                <time>2017-12-01 09:39:51</time>
+			            </div>
+			            <span class="span_enter">10000.00</span>
+			        </div>
+			    </div>
+			
+			    <div class="type_box" style="display: none;">
+			        <div class="details_list">
+			            <div class="list1">
+			            	<p>充值</p>
+			                <time>2017-12-01 09:39:51</time>
+			            </div>
+			            <span class="span_enter">10000.00</span>
+			        </div>
+			    </div>
+			
+			    <div class="type_box" style="display: none;">
+			        <div class="details_list">
+			            <div class="list1">
+			            	<p>提现</p>
+			                <time>2017-12-01 09:49:51</time>
+			            </div>
+			            <span>-154.60</span>
+			        </div>
+			    </div>
+			</div>		
+		</div>
+		<!--<footer id="footer">
+			<ul class="nav">
+				<li>
+					<a href="index.html">
+						<i class="icon iconfont icon-home"></i><span>首页</span>
+					</a>
+				</li>
+				<li>
+					<a href="prosingle.html">
+						<i class="icon iconfont icon-Order"></i><span>订单</span>
+					</a>
+				</li>
+				<li  class="active">
+					<a href="person.html">
+						<i class="icon iconfont icon-wode"></i><span>我的</span>
+					</a>
+				</li>
+			</ul>
+		</footer>-->
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script src="js/rem.js" type="text/javascript"></script>
+	<script src="js/swiper.min.js" type="text/javascript"></script>
+	<script type="teopxt/javascript" src="js/script.js"></script>
+	<script type="text/javascript">
+	    jQuery(function($){
+	        $('.account_details ul li').click(function(){
+	            var index = $('.account_details ul li').index(this);
+	            $(this).addClass('current').siblings('li').removeClass('current');
+	            $('.account_details .type_box:eq('+index+')').show().siblings('.type_box').hide();
+	        })
+	    })
+	</script>
+
+</html>

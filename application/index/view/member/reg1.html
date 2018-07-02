@@ -1,0 +1,42 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main">
+	<div class="pro_top yz">
+		<dl>
+			<dt><span></span></dt>
+			<dd>实名验证</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>手机验证</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>预存押金</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>注册完成</dd>
+		</dl>
+	</div>
+	<div class="yz_info">
+		<form action="{:url('Member/reg2')}" method="post">
+			<div class="yz_info_con">
+				<span>手机号码</span>
+				<input type="text" name="telphone" id="telphone" readonly="" value="{$mobile}" />
+			</div>
+			<div class="yz_info_con">
+				<span>验证码</span>
+				<input type="text" name="telcode" id="telcode" value="" size='10' placeholder="请输入验证码"/>
+				<b class="getcode" cishu="0" sendurl="{:url('Member/mobileSend')}">点击获取</b>
+			</div>
+			<div class="tishi">默认初始化密码为：123456</div>
+			<button>下一步</button>
+		</form>
+	</div>
+</div>
+{include file="pub/footer" /}

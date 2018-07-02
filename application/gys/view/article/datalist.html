@@ -1,0 +1,15 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-jiantou" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$hdata['htitle']}</p>
+</header>
+<div id="main" class="person_mian">
+	<div class="user_info">
+		<ul class="pro">
+			{volist name="article_list" id="vo" empty="$empty"}
+			<li><a href="{:url('Article/index',['id'=>$vo['id']])}">{$vo['title']}</a></li>
+			{/volist}
+		</ul>
+	</div>		
+</div>
+{include file="pub/footer2" /}

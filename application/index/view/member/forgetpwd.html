@@ -1,0 +1,128 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main">
+{switch name="sep" }
+    {case value="1"}
+    <div class="pro_top yz">
+		<dl style="margin-left: 12.5%;">
+			<dt><span></span></dt>
+			<dd>手机验证</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>输入新密码</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>修改成功</dd>
+		</dl>
+	</div>
+	<div class="yz_info">
+		<form action="{:url('Member/forgetpwd')}" method="post" onsubmit="return forgetpwdCheck();">
+			<div class="yz_info_con">
+				<span>手机号码</span>
+				<input type="text" name="telphone" id="telphone" value="" />
+			</div>
+			<div class="yz_info_con">
+				<span>验证码</span>
+				<input type="text" name="telcode" id="telcode" value="" size='10' placeholder="请输入验证码"/>
+				<b class="getcode" cishu="0" sendurl="{:url('Member/mobileSend')}">点击获取</b>
+			</div>
+			<input type="hidden" name="sep" value="1">
+			<button>下一步</button>
+		</form>
+	</div>
+    {/case}
+    {case value="2"}
+    <div class="pro_top yz">
+		<dl style="margin-left: 12.5%;">
+			<dt><span style="background: #259b24;"></span></dt>
+			<dd>手机验证</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>输入新密码</dd>
+		</dl>
+		<dl>
+			<dt><span></span></dt>
+			<dd>修改成功</dd>
+		</dl>
+	</div>
+	<div class="yz_info">
+		<form action="{:url('Member/forgetpwd')}" method="post" onsubmit="return forgetpwdCheck2();">
+			<div class="yz_info_con">
+				<span>输入新密码</span>
+				<input type="password" name="newpwd" id="newpwd" value="" placeholder="请输入新密码"/>
+			</div>
+			<div class="yz_info_con">
+				<span>确认密码</span>
+				<input type="password" name="renewpwd" id="renewpwd" value="" placeholder="确认密码"/>
+			</div>
+			<input type="hidden" name="mobile" value="{$mobile}">
+			<input type="hidden" name="sep" value="2">
+			<button>下一步</button>
+		</form>
+	</div>
+    {/case}
+    {case value="3"}
+    <style>
+		.tishi{
+			width: 100%;
+			padding: 1rem 0;
+		}
+		.tishi img{
+			display: block;
+			margin: 0 auto;
+			width: 0.5rem;
+		}
+		.tishi p{
+			font-size: 0.18rem;
+			line-height: 0.4rem;
+			text-align: center;
+			margin: 0.2rem 0;
+		}
+	</style>
+    <div class="pro_top yz">
+		<dl style="margin-left: 12.5%;">
+			<dt><span style="background: #259b24;"></span></dt>
+			<dd>手机验证</dd>
+		</dl>
+		<dl>
+			<dt><span style="background: #259b24;"></span></dt>
+			<dd>输入新密码</dd>
+		</dl>
+		<dl>
+			<dt><span style="background: #259b24;"></span></dt>
+			<dd>修改成功</dd>
+		</dl>
+	</div>
+	<div class="yz_info">
+		<form action="" method="post">
+			<div class="tishi">
+				<img src="/static/images/zc_03.png">
+				<p>修改成功</p>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript">
+		var num=3;
+		var dingshi=setInterval(function(){ 
+			if(num==1)
+			{
+				window.location="{:url('Member/login')}";
+				clearInterval(dingshi);
+			}else{
+				num--;
+			}
+		}, 1000);
+	</script>
+    {/case}
+{/switch}
+
+
+</div>
+{include file="pub/footer2" /}

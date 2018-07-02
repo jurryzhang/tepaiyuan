@@ -1,0 +1,162 @@
+{include file='pub/header' /}
+<header id="header">
+	<i class="icon iconfont icon-wode"><a href="{:url($headdata['hleft'])}" style="width: 0.4rem;height: 0.4rem;position: absolute;left: 0;top:0;"></a></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-weixin"></i>
+</header>
+<div id="main" status="{}">
+	<div class="add">
+		<div class="in_span"><span>我在：</span></div>
+		{if condition="$uid"}
+		<div class="quyuSelect">
+			<!-- 省 -->
+			<input hidden="" id="province" value="{$province}">
+			<!-- 市 -->
+			<select id="city" size=1  disabled="disabled"> 
+				<option value='0'>请选择</option>
+				{$cityTemp}
+			</select>
+			<!-- 区 -->
+			<select id="district" size=1 onchange="quMarket()"> 
+				<option value='0'>请选择</option>
+				{$districtTemp}
+			</select>
+		</div>
+		{else}
+		<div class="quyuSelect">请先定位</div>
+		{/if}
+		<div class="i_dingwei"><i id="dingwei" gurl="{:url('Member/dingwei')}" class="icon iconfont icon-miaozhun" onclick="getAddress()" ></i></div>
+	</div>
+	<ul class="dingdannav" gurl="{:url('Index/marketNum')}" curtype="0">
+		<li type="0" class="active">即时订单</li>
+		<li type="1">预约订单</li>
+	</ul>
+	<div class="dingdanlist">
+		<ul class="ddlist jishi" id="list_0">
+			{volist name="sellerlist" id="vo" empty="$empty"}
+			<li>
+				<a href="{:url('Index/shichanglist',['id'=>$vo['id'],'type'=>0])}">
+					<p>{$vo['name']}</p>
+					<p><strong id="0market_{$vo['id']}">{$vo['num']} </strong>个订单</p>
+				</a>
+			</li>
+			{/volist}
+		</ul>
+		<ul class="ddlist yuyue" id="list_1">
+		</ul>
+	</div>
+</div>
+<div id="jiedan">
+	<label class="button">
+	  <input type="checkbox" {eq name="jiedanStatue" value="0"}checked{/eq} gurl="{:url('Index/jiedan')}">
+	  <span></span>
+	  <span></span>
+	  <span></span>
+	</label>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=g0OPrhSYBqORW9q4QdlomzUtqPYbbfG0"></script>
+<script type="text/javascript">
+var address="{$userinfo['address']}";
+var uid="{$userinfo['uid']}";
+if(address=='')	
+{
+	getAddress();
+}
+function getAddress(uid)
+{
+	var map = new BMap.Map();
+	var geolocation = new BMap.Geolocation();
+	var geoc = new BMap.Geocoder();
+	var url=document.getElementById("dingwei").getAttribute('gurl');
+	geolocation.getCurrentPosition(function(r){
+		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+			geoc.getLocation(r.point, function(rs){
+				var addComp = rs.addressComponents;
+				var locprovince=addComp.province;//省
+				var loccity=addComp.city;//城市
+				var locdistrict=addComp.district;//区县
+				var locstreet=addComp.street;//街道
+				var locstreetNumber=addComp.streetNumber;//街道编号
+	        	var addressvalue=addComp.province+addComp.city+addComp.district+addComp.street+addComp.streetNumber;
+	        	$.ajax({    
+			        url : url,    
+			        type : 'POST',    
+			        data : {'province':locprovince,'city':loccity,'district':locdistrict,'street':locstreet,'address':addressvalue},
+			        dataType:"json",	
+			        success : function(result){
+			        	alert(result.msg);
+			        	if(result.code==1)
+			        	{
+			        		document.getElementById("province").value=result.province;
+			        		document.getElementById("city").innerHTML='';
+			        		document.getElementById("city").innerHTML+=result.cityTemp;
+			        		document.getElementById("district").innerHTML='';
+			        		document.getElementById("district").innerHTML+=result.districtTemp;
+			        	}
+			        	if(result.code==3)
+			        	{
+			        		window.location="{:url('Member/login')}";
+			        	}
+			        },
+			    })
+				
+
+			});
+		}
+		else {
+			alert('failed'+this.getStatus());
+		}        
+	},{enableHighAccuracy: true})
+}
+</script>
+{include file="pub/footer" /}
+<script type="text/javascript">
+var serv_time = '{$serv_time}';
+$(function() {
+    time_marketOrder();
+});
+//市场订单实时请求
+function time_marketOrder(){
+	var url="{:url('Interfun/marketOrderNum')}";
+	var uid="{$uid}";
+	var type=$('.dingdannav').attr('curtype');
+	$.post(url, { 'serv_time': +serv_time,'uid':uid ,'type':type},function(result){
+		if(result.code==1)
+		{
+			var list=result.list;
+			$.each(list,function(i,item){
+				// alert(i+'------'+item);
+				var hid=$('#'+type+'market_'+i);
+				if(hid.length>0)
+				{
+					hidnum=parseInt(hid.html())+item;
+					// alert(hidnum);
+					hid.html(hidnum);
+				}
+			});
+			serv_time = result.serv_time;
+			window.setTimeout("time_marketOrder()", 3*1000);
+		}
+	}, "json");
+}
+
+//获取区域
+function quMarket()
+{
+	var selected=$('#district').val();
+	var id="{$uid}";
+	var url="{:url('Member/updata_quyu')}";
+	$.post(url, { 'id': id,'district':selected},function(result){
+		if(result.code==1)
+		{
+			location.reload();
+		}else{
+			alert(result.msg);
+		}
+	}, "json");
+}
+</script>
+
+
+
+

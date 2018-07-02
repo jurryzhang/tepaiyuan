@@ -1,0 +1,61 @@
+{include file="pub/header"}
+<div class="serBox">
+	<div class="search ser">
+		<i class="icon iconfont icon-search"></i>
+		<input id="key_search" name="key" type="text" value="{$key}" placeholder="搜索内容"/>
+		<button type="submit" onclick="lll()">搜索</button>
+	</div>
+</div>
+<div id="main" style="padding-top: 0.52rem;background: #f6f6f6;">
+	<div class="proShaixuan">
+		<select id="type_select" onchange="lll()">
+			<option value="0" {if condition="$type eq '0'"} selected="selected" {/if} value="0" >全部分类</option>
+			{volist name="cates" id="vo"}
+			<option {if condition="$type eq $vo['id']"} selected="selected" {/if} value="{$vo.id}" >{$vo.name}</option>
+			{/volist}
+		</select>
+		<select id="sort_select" onchange="lll()">
+			<option value="0">默认排序</option>
+			<option {if condition="$sort eq 1"} selected="selected" {/if} value="1" >销量从高到低</option>
+			<option {if condition="$sort eq 2"} selected="selected" {/if} value="2" >价格从低到高</option>
+			<option {if condition="$sort eq 3"} selected="selected" {/if} value="3" >价格从高到低</option>
+		</select>
+	</div>
+	<div class="proList proList1">
+		<ul>
+			{volist name="goods" id="vo"}
+			<li>
+				<div class="proTp fl">
+					<img src="{$vo.img}">
+				</div>
+				<div class="proJs fr">
+					<h1>{$vo.name}</h1>
+					<b>库存：{$vo.store_nums}</b>
+					<p>现价：<span>￥{$vo.sell_price}</span> /
+						<del>原价：￥{$vo.market_price}</del>
+					</p>
+					<a href="pro_detail">{$vo.content}</a>
+					<p>
+						<a href="{:url('edit',['id'=>$vo['id']])}" class="anniu">编辑</a>
+						<a href="{:url('delete',['id'=>$vo['id']])}" class="anniu">删除</a>
+					</p>
+				</div>
+			</li>
+			{/volist}
+		</ul>
+	</div>
+	<div class="proZeng">
+		<a href="{:url('add')}">
+			<i class="icon iconfont icon-iconjia"></i>
+			<p>添加新商品</p>
+		</a>
+	</div>
+</div>
+<script>
+  function lll() {
+    var type = $('#type_select').val();
+    var sort = $('#sort_select').val();
+    var key = $('#key_search').val();
+    window.location.href = '{:url()}' + '?type=' + type + '&sort=' + sort + '&key=' + key;
+  }
+</script>{include file="pub/footer"}

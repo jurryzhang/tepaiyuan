@@ -1,0 +1,104 @@
+{include file='pub/header' /}
+<header id="header">
+	<i class="icon iconfont icon-jiantou" onclick="self.location=document.referrer;"></i>
+	<p class="title">订单</p>
+</header>
+<div id="main">
+	<div class="orderFenlei">
+		<ul>
+			<li {if condition="$status eq '0'" } class="orderCur" {/if}>
+			<a href="{:url('',['status'=>'0'])}">全部</a>
+			</li>
+			<li {if condition="$status eq '2'" } class="orderCur" {/if}>
+			<a href="{:url('',['status'=>'2'])}">新订单</a>
+			</li>
+			<li {if condition="$status eq '8,11'" } class="orderCur" {/if}>
+			<a href="{:url('',['status'=>'8,11'])}">进行中</a>
+			</li>
+			<li {if condition="$status eq '5,10'" } class="orderCur" {/if}>
+			<a href="{:url('',['status'=>'5,10'])}">已完成</a>
+			</li>
+			<li {if condition="$status eq '3,4'" } class="orderCur" {/if}>
+			<a href="{:url('',['status'=>'3,4'])}">已取消</a>
+			</li>
+			<li {if condition="$status eq '6,7'" } class="orderCur" {/if}>
+			<a href="{:url('',['status'=>'6,7'])}">退货</a>
+			</li>
+		</ul>
+	</div>
+	<div class="orderList">
+		<ul>
+			{volist name="list" id="vo"}
+			<li>
+				{volist name="vo.goods" id="voo"}
+				<div class="orderTop clearfix">
+					<div class="orderTp fl">
+						<img src="{$voo.img}">
+					</div>
+					<div class="orderJs fr">
+						<h1>{$voo.goods_array}</h1>
+						<p>￥{$voo.real_price} * {$voo.goods_nums} {$voo.unit}</p>
+						{if condition="$voo['is_refund']"}
+						<p class="zhuangtai">退货</p>
+						{/if}
+						{if condition="in_array($vo['status'],[3,4])"}
+						<p class="zhuangtai">订单取消</p>
+						{/if}
+						{if condition="in_array($vo['status'],[12])"}
+						<p class="zhuangtai">订单拒绝</p>
+						{/if}
+					</div>
+				</div>
+				{/volist}
+				<div class="orderShxx clearfix">
+					<i class="icon iconfont icon-dingwei"></i>
+					<div class="shxx">
+						<div class="orderDiv">
+							<p>收货人：{$vo.accept_name}</p>
+							<p>联系方式：{$vo.mobile}</p>
+							<p>订单编号：{$vo.order_no}</p>
+							<p>送货地址：{$vo.address}</p>
+							<p>预计送达时间：{$vo.songda_time}</p>
+							<p>订单附言：{$vo.postscript}</p>
+						</div>
+
+						{if condition="$vo['freight_id']"}
+						<div  class="orderDiv orderDiv1">
+							<p>接单时间：{$vo.qiangdan_time}</p>
+							<p>配送人姓名：{$vo.freight_name}</p>
+							<p>配送人手机号：{$vo.freight_telphone}</p>
+							{if condition="$vo['freight_landline']"}
+							<p>配送人座机号：{$vo.freight_landline}</p>
+							{/if}
+							<p>配送人车牌号：{$vo.freight_plate_num}</p>
+						</div>
+						{/if}
+
+						{if condition="$vo['return_content']"}
+						<p class="zhuangtai">退货原因：{$vo.return_content}</p>
+						{/if}
+
+					</div>
+					{if condition="$vo['status'] eq 2 and $vo['pay_status'] eq 1 and $vo['freight_id'] eq 0 and $vo['freight_status'] eq 0"}
+					<div class="orderZt">
+						<a href="{:url('check', ['id'=>$vo['id'],'check'=>1,])}"><span class="xdd">确认订单</span></a>
+						<a href="{:url('check', ['id'=>$vo['id'],'check'=>0,])}"><span class="xdd">拒绝接单</span></a>
+					</div>
+					{/if}
+					{if condition="$vo['is_refund']"}
+					<div class="orderZt">
+						<form style="display:inline-block;" action="{:url('check_return',['id'=>$vo['id'],'return_id'=>$vo['return_id'],'status'=>'2'])}" method="post">
+							<input class="thamount" type="text" name="amount" placeholder="退款金额"/>
+							<input class="thsubmit" type="submit" value="确认退货">
+						</form>
+						<!--<a href="{:url('check_return', ['id'=>$vo['id'],'return_id'=>$vo['return_id'],'status'=>'2'])}"><span class="xdd">确认退货</span></a>-->
+						<a href="{:url('check_return', ['id'=>$vo['id'],'return_id'=>$vo['return_id'],'status'=>'1'])}"><span class="xdd" style="float:right">拒绝退货</span></a>
+					</div>
+					{/if}
+				</div>
+			</li>
+			{/volist}
+		</ul>
+	</div>
+
+</div>{include file="pub/footer" /}

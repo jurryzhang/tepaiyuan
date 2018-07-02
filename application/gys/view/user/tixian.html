@@ -1,0 +1,29 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-jiantou" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$hdata['htitle']}</p>
+	<a href="{:url('User/mingxi')}" class="shuom">账户明细</a>
+</header>
+<div id="main" class="person_mian">
+	<div class="user_info">
+		<form action="{:url('User/tixian')}" method="post">
+			<div class="tixan">
+				<div class="psd_li">
+					<span>银行卡</span>
+					<select name="bankid">
+						{volist name="ubanklist" id="vo"}
+						<option value="{$vo['id']}">{$vo['bank_name']}（{$vo['bank_number']|substr=-4,4}）</option>
+						{/volist}
+					</select>
+				</div>
+				<div class="psd_li">
+					<span>金额（￥）</span>
+					<input type="text" name="total_fee" placeholder="请填写提现金额" value="">
+				</div>
+			</div>
+			<input type="hidden" name="seller_id" value="{$info['id']}">
+			<input type="hidden" name="body" value="{$hdata['htitle']}">
+			<button class="submit">确定</button>
+		</form>
+	</div>
+</div>{include file="pub/footer" /}

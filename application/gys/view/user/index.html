@@ -1,0 +1,93 @@
+{include file="pub/header"}
+<header id="header">
+	<p class="title">个人中心</p>
+</header>
+<div id="main">
+	<div class="userTop clearfix" style="position: relative;">
+		<div class="userTx fl">
+			<img src="{$info.certif_img}">
+		</div>
+		<div class="userXx fr">
+			<h1>{$info.true_name}</h1>
+			<p>联系方式：{$info.mobile}</p>
+		</div>
+		<a href="{:url('edit')}">
+			<div style="position: absolute;top: 0;right: 0;" class="per_t_r" >
+				<img src="/static/images/pen_03.png" alt=""/>
+			</div>
+		</a>
+	</div>
+	<div class="wdqbBox">
+		<div class="wdqbTop">
+			<label>我的钱包</label>
+		</div>
+		<ul class="wdqbList">
+			<li>
+				<p class="red">{$info.cash}</p>
+				<p>保证金</p>
+			</li>
+			<li>
+				<a href="{:url('list_yhk')}">
+					<p class="red">{$bank_count}张</p>
+					<p>银行卡</p>
+				</a>
+			</li>
+
+			<li>
+				<a href="{:url('mingxi')}">
+					<p class="red">{$info.amount}</p>
+					<p>余额</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="wdqbBox sybzBox">
+		<ul class="wdqbList sybz">
+			<li>
+				<a href="{:url('tixian')}">
+					<p>提现</p>
+				</a>
+			</li>
+			<li>
+				<a href="{:url('tyj')}">
+					<p>退押金</p>
+				</a>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="wdqbBox sybzBox">
+		<div class="wdqbTop">
+			<label>使用帮助</label>
+		</div>
+		<ul class="wdqbList sybz">
+			<li>
+				<a href="{:url('service')}">
+					<i class="icon iconfont icon-kefu"></i>
+					<p>客服中心</p>
+				</a>
+			</li>
+			<li>
+				<a href="{:url('help')}">
+					<i class="icon iconfont icon-changjianwenti"></i>
+					<p>使用帮助</p>
+				</a>
+			</li>
+			<li>
+				<a href="{:url('about')}">
+					<i class="icon iconfont icon-guanyuwomen"></i>
+					<p>关于我们</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<a href="{:url('resetpwd')}">
+		<div style="width: 90%;padding: 4% 5%;overflow: hidden;border-top: solid 1px #c8c8c8;border-bottom: solid 1px #c8c8c8;">
+		    <img src="http://114.67.129.87:800//views/mobile_new/skin/default/images/self-icon011.png" style="width: 10%;float: left;">
+		    <p style="font-size: 0.16rem;color: #333;padding: 1.2% 5%;float: left;">修改密码</p>
+		    <span style="width: 4%;font-size: 0.16rem;color: #666666;float: right;"><i class="icon iconfont icon-jiantou-copy-copy"></i></span>
+		</div>
+	</a>
+	<a href="{:url('logout')}"><div><center class="subBtn">退出登录</center></div></a>
+	
+</div>{include file="pub/footer"}

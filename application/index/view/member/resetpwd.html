@@ -1,0 +1,29 @@
+{include file="pub/header"}
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main" style="background: #F2F2F2;">
+	<div class="xgmm">
+		<form action="{:url('Member/resetpwd')}" method="post" onsubmit="return restpwdCheck();">
+			<ul>
+				<li>
+					<img src="/static/images/password.png"/>
+					<input type='password' placeholder="输入原密码" name="oldpwd" id="oldpwd" class="input_text" pattern="^\S{6,32}$" alt='6-16位字母数字组合'>
+				</li>
+				<li>
+					<img src="/static/images/password.png"/>
+					<input type='password' placeholder="输入新密码" name="newpwd" id="newpwd" class="input_text" pattern="^\S{6,32}$" bind='repassword' alt='6-16位字母数字组合'>
+				</li>
+				<li>
+					<img src="/static/images/password.png"/>
+					<input type='password' placeholder="确认密码" name="renewpwd" id="renewpwd" class="input_text" pattern="^\S{6,32}$" bind='password' alt='6-16位字母数字组合'>
+				</li>
+			</ul>
+			<input type="hidden" name="uid" value="{$userinfo['uid']}">
+			<button class="submit submitBtn">确认修改</button>
+		</form>
+	</div>
+</div>
+{include file="pub/footer2" /}

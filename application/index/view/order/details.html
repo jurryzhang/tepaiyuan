@@ -1,0 +1,89 @@
+{include file="pub/header" /}
+<header id="header">
+	<i class="icon iconfont icon-fanhui redirect" redUrl="{:url('Order/index')}"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont icon-gengduo"></i>
+</header>
+<div id="main">
+	<p class="jl">
+		<i class="icon iconfont icon-juli juli"></i>距离:&nbsp;<span>{$orderdetails['juli']}公里</span>
+		{switch name="orderdetails.freight_status"}
+		    {case value="1"}
+			<a href="{:url('Order/updateStatus',['oid'=>$orderdetails['id'],'type'=>'quhuo'])}">确认取货</a>
+	<p class="qhts" align="center">请确保货物完好后再取货</p>
+		    {/case}
+		    {case value="2"}
+			<a href="{:url('Order/updateStatus',['oid'=>$orderdetails['id'],'type'=>'queren'])}">确认送达</a>
+		    {/case}
+		    {default /}
+		    {switch name="orderdetails.status"}
+		    	{case value="5"}
+		    	<a href="javascript:void(0);">已确认</a>
+		    	{/case}
+		    	{case value="11"}
+		    	<a href="javascript:void(0);">已确认</a>
+		    	{/case}
+		    	{case value="10"}
+		    	<a href="javascript:void(0);">已确认</a>
+		    	{/case}
+		    	{case value="6"}
+		    	<a href="javascript:void(0);">退货退款</a>
+		    	{/case}
+		    	{case value="7"}
+		    	<a href="javascript:void(0);">部分退货退款</a>
+		    	{/case}
+		    	{default /}
+		    	<a href="javascript:void(0);">待确认</a>
+		    {/switch}
+		{/switch}
+	</p>
+	<div class="fhrinfo">
+		<i class="icon iconfont icon-fahuo fahuo"></i>
+		<p class="fhrname">发货人: <span>{$orderdetails['fh_name']}</span><strong class="phone">{$orderdetails['fh_telphone']}</strong></p>
+		{if condition="$orderdetails['seller_finish_time']!=0"}
+		<p class="fhtime">发货时间:<span>{$orderdetails['seller_finish_time']}</span></p>
+		{/if}
+		<p class="fhadd">发货地址 : {$orderdetails['fh_address']}</p>
+	</div>
+	<div class="shrinfo">
+		<i class="icon iconfont icon-ccgl-shouhuoguanli-1 shouhuo"></i>
+		<p class="shrname">收货人: <span>{$orderdetails['accept_name']}</span><strong class="phone">{$orderdetails['mobile']}</strong></p>
+		<p class="shtime">
+			收货时间:
+			<span>
+			{if condition="$orderdetails['songda_time']==0"}
+			尽快送达
+			{else /}
+			{$orderdetails['songda_time']}
+			{/if}
+			</span>
+		</p>
+		<p class="shadd">收货地址 : {$orderdetails['address']}</p>
+	</div>
+	<ul class="spinfo" style="height: auto;">
+		{volist name="orderdetails.goodslist" id="vo"}
+		<li>
+			<div class="spleft">
+				<div class="sppic"><img src="{$vo['img']}"></div>
+				<div class='spxq'>
+					<p>{$vo['name']}</p>
+					<p>{$vo['goods_weight']}KG/包</p>
+					<p>{if condition="$vo['is_return']==1"}退货{/if}</p>
+				</div>
+			</div>
+			<div class="spright">
+				<p>X{$vo['goods_nums']}</p>
+				<p style="color: #ffd419;">￥{$vo['real_price']}</p>
+			</div>
+		</li>
+		{/volist}
+	</ul>
+	<div class="xxxx">
+		<p><strong>运费:<b>{$orderdetails['yunfei']}</b>元</strong></p>
+		<p>订单编号:<span>{$orderdetails['ordermarket_no']}</span></p>
+		<p>商品数量:<span>{$orderdetails['count']}种</span></p>
+		<p>商品重量:<span>{$orderdetails['weight']}KG</span></p>
+		<p>商品总价格:<span>￥{$orderdetails['order_amount']}</span></p>
+	</div>
+</div>
+{include file="pub/footer" /}

@@ -1,0 +1,147 @@
+{include file="pub/header" /}
+<div class="modal">
+	<div class="modalcontent">
+		<p class="tishititle">温馨提示</p>
+		<p class="tishiyu">您的订单已经饱和了，不能在进行接单了哦，请先进行配送</p>
+		<a href="{:url('Order/index')}"><button class="gomydd">进入我的订单</button></a>
+	</div>
+	<div class="close"><img src="/static/images/close.png"></div>
+</div>
+<header id="header">
+	<i class="icon iconfont icon-fanhui" onclick="self.location=document.referrer;"></i>
+	<p class="title">{$headdata['htitle']}</p>
+	<i class="icon iconfont"></i>
+</header>
+<div id="main">
+	<input id="cur_url" type="hidden" value="{$cur_url}" />
+	<ul class="pro_sel">
+		<li paixu="all" order="0" class="active">综合排序</li>
+		<li paixu="juli" order="0">距离排序</li>
+		<li paixu="yunfei" order="0">价格排序</li>
+	</ul>
+	<div class="order_list" id="order_list">
+		{volist name="list" id="vo" empty="$empty"}
+		<div class="order">
+			<p class="order1"><i class="icon iconfont icon-juli2"></i><span>{$vo['juli']}km</span>
+					{$vo['address']}
+			</p>
+			<div class="o_left">
+				<p>订单编号：
+					<span>
+						{$vo['ordermarket_no']}
+					</span>
+				</p>
+				<p>收货时间：
+					<span>
+						{if condition="$vo['songda_time']==0"}
+						尽快送达
+						{else /}
+						{$vo['songda_time']}（预计）
+						{/if}
+					</span>
+				</p>
+				<p>重量：<span>{$vo['weight']}KG</span>&nbsp;&nbsp;&nbsp;运费：<span style="color: red;">{$vo['yunfei']}</span>元</p>
+				<b>易碎、易压</b>
+				<div class="clear"></div>
+			</div>
+			<div class="o_right" gotourl="{:url('Index/qiangdan')}">
+				{switch name="vo.qd_status"}
+				    {case value="0"}
+					<a href="javascripr:val(0);" class="qiangdanzhong" oid="{$vo['id']}">立即<br/>抢单</a>
+				    {/case}
+				    {case value="1"}
+					<a href="javascripr:val(0);" class="qiangdanwancheng">抢单<br/>成功</a>
+				    {/case}
+				    {case value="2"}
+					<a href="javascripr:val(0);" class="yibeiqiang">抢单<br/>失败</a>
+				    {/case}
+				{/switch}
+			</div>
+			<div class="clear"></div>
+		</div>
+		{/volist}
+	</div>
+</div>
+{include file="pub/footer" /}
+<script>
+	$(".close").click(function  () {
+		$(".modal").hide();
+	})
+	$(".pro_sel li").click(function  () {
+		var index = $(this).index();
+		var inthis=$(this);
+		var paixu=$(this).attr('paixu');
+		var order=$(this).attr('order');
+		var mid="{$mid}";
+		var url="{:url('Index/shichanglist')}";
+		$(this).addClass("active").siblings().removeClass("active");
+		$.post(url, { "paixu": paixu,'id':mid,'order':order },function(result){
+			if(paixu!='all')
+			{
+				order=order==1?0:1;
+			}
+			inthis.attr('order',order);
+			// alert(result.order);
+			// console.log(result.order);
+			$('#order_list').html(result.temp);
+		}, "json");
+	})
+	$(".qiangdanzhong").click(function  () {
+		var index=$(this);
+		var oid=$(this).attr('oid');
+		var url=$(this).parent().attr('gotourl');
+		// alert(oid+'-----'+url);
+		$.post(url, { "oid": oid },function(result){
+			if(result.code!=4)
+			{
+				alert(result.msg);
+			}
+			if(result.code==3)
+			{
+				window.location="{:url('Member/login')}";
+			}
+			if(result.code==1)
+			{
+				index.removeClass('qiangdanzhong');
+				index.addClass('qiangdanwancheng');
+				index.html('抢单<br/>成功');
+			}
+			if(result.code==4)
+			{
+				$(".modal").show();
+			}
+
+		}, "json");
+		//
+	})
+</script>
+<script type="text/javascript">
+var serv_time = '{$serv_time}';
+$(function() {
+    time_marketOrder();
+});
+// 市场订单实时请求
+function time_marketOrder(){
+	var url="{:url('Interfun/marketOrder')}";
+	var uid="{$uid}";
+	var mid="{$mid}";
+	var cur_url=$('#cur_url').val();
+	$.post(url, { 'serv_time': +serv_time,'uid':uid,'mid':mid },function(result){
+		if(result.code==1)
+		{
+			if(result.tishi!='')
+			{
+				$('.push_show').remove();
+				$('#main').append(result.tishi);
+				$('.push_show').fadeOut(5000);
+
+				setTimeout(window.location=cur_url,8);
+			}
+
+			serv_time = result.serv_time;
+			window.setTimeout("time_marketOrder()", 10*1000);
+		}
+	}, "json");
+}
+
+</script>

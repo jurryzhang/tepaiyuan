@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, user-scalable=0, width=device-width">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<title>跳转提示</title>
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+	<link rel="stylesheet" href="/static/css/index.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<style>
+	.tishi{
+		width: 100%;
+		padding: 1.5rem 0;
+	}
+	.tishi img{
+		display: block;
+		margin: 0 auto;
+		width: 0.5rem;
+	}
+	.tishi p{
+		font-size: 0.18rem;
+		line-height: 0.4rem;
+		text-align: center;
+		margin: 0.2rem 0;
+	}
+</style>
+
+<body>
+<header id="header">
+	<p class="title">友情提示</p>
+</header>
+<div class="login">
+	<div class="tishi">
+	 	<?php switch ($code) {?>
+	        <?php case 1:?>
+			<img src="/static/images/success.png">
+			<p><?php echo(strip_tags($msg));?></p>
+	        <?php break;?>
+	        <?php case 0:?>
+	        <img src="/static/images/error.png">
+			<p><?php echo(strip_tags($msg));?></p>
+	        <?php break;?>
+	    <?php } ?>
+	    <p class="jump">
+	        页面自动 <a id="href" href="<?php echo($url);?>">跳转</a> 等待时间： <b id="wait"><?php echo($wait);?></b>
+	    </p>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="/static/js/jquery-1.11.0.js"></script>
+<script src="/static/js/rem.js" type="text/javascript"></script>
+<script type="text/javascript">
+    (function(){
+        var wait = document.getElementById('wait'),
+            href = document.getElementById('href').href;
+        var interval = setInterval(function(){
+            var time = --wait.innerHTML;
+            if(time <= 0) {
+                location.href = href;
+                clearInterval(interval);
+            };
+        }, 1000);
+    })();
+</script>
+</html>
